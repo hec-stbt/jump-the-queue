@@ -1,0 +1,17 @@
+services:
+  # Java backend
+  backend:
+    build: backend
+  # Angular backend
+  frontend:
+    build: frontend
+    ports:
+      - "9000:4200"
+    volumes:
+      - app:/home/node/app
+    depends_on:
+      - backend
+
+# Data persistanse
+volumes:
+  app:
