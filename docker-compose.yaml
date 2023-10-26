@@ -2,7 +2,7 @@ services:
   # Java backend
   backend:
     build: backend
-  # Angular backend
+  # Angular frontend
   frontend:
     build: frontend
     ports:
