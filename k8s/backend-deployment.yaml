@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jump-the-queue-backend-deployment
+  labels:
+    app: jump-the-queue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jump-the-queue
+  template:
+    metadata:
+      labels:
+        app: jump-the-queue
+    spec:
+      containers:
+        - name: jump-the-queue-backend-container
+          image: jump-the-queue-backend:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
