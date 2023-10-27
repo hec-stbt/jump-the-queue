@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jump-the-queue-frontend-deployment
+  name: frontend-deployment
   labels:
-    app: jump-the-queue
+    app: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: jump-the-queue
+      app: frontend
   template:
     metadata:
       labels:
-        app: jump-the-queue
+        app: frontend
     spec:
       containers:
-        - name: jump-the-queue-frontend-container
+        - name: frontend-container
           image: jump-the-queue-frontend:latest
           imagePullPolicy: Never
           resources:
@@ -23,4 +23,5 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 4200
+            - containerPort: 80
+              name: http
