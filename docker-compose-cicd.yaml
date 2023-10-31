@@ -54,18 +54,30 @@ services:
     volumes:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
-
+  # ................................................
+  #                     NEXUS                     #
+  # ................................................
+  nexus:
+    image: sonatype/nexus3:3.61.0
+    container_name: nexus
+    ports:
+      - "8081:8081"
+    networks:
+      - jenkins_cicd
+    volumes:
+      - nexus-data:/sonatype-work
 
 networks:
   jenkins_cicd:
     driver: bridge
 
 volumes:
-  jenkins-data:
-  jenkins-docker-certs:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_bundled-plugins:
-  postgresql:
-  postgresql_data:
+  jenkins-data: {}
+  jenkins-docker-certs: {}
+  sonarqube_conf: {}
+  sonarqube_data: {}
+  sonarqube_extensions: {}
+  sonarqube_bundled-plugins: {}
+  postgresql: {}
+  postgresql_data: {}
+  nexus-data: {}
