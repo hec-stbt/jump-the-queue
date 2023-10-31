@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  # JENKINS
+  jenkins:
+    image: jenkins/jenkins:2.414.3-jdk17
+    container_name: jenkins-blueocean
+    restart: on-failure
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    networks:
+      - jenkins_cicd
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client:ro
+
+
+networks:
+  jenkins_cicd:
+    driver: bridge
+
+volumes:
+  jenkins-data:
+  jenkins-docker-certs:
