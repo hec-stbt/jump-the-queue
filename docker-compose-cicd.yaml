@@ -2,7 +2,7 @@ version: "3"
 
 services:
   # ................................................
-  #                   SONARQUBE                   #
+  #                   SONARQUBE                    #
   # ................................................
   sonarqube:
     image: sonarqube:10.2.1-community
@@ -34,7 +34,7 @@ services:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
   # ................................................
-  #                   JENKINS                     #
+  #                   JENKINS                      #
   # ................................................
   jenkins:
     image: jenkins/jenkins:2.414.3-jdk17
@@ -55,7 +55,7 @@ services:
       - jenkins-data:/var/jenkins_home
       - jenkins-docker-certs:/certs/client:ro
   # ................................................
-  #                     NEXUS                     #
+  #                     NEXUS                      #
   # ................................................
   nexus:
     image: sonatype/nexus3:3.61.0
